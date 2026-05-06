@@ -4,192 +4,141 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CYBER STORE</title>
-
 <style>
-/* 基础样式 */
-body {
-  margin: 0;
-  padding: 0;
+body{
   font-family: Arial, sans-serif;
-  background: #0a0a0a;
-  color: white;
+  margin:0;
+  padding:0;
+  background:#0a0a0a;
+  color:white;
 }
-
+/* 顶部通知 */
+.topbar{
+  background:#222;
+  padding:8px 15px;
+  text-align:center;
+  font-size:14px;
+  border-bottom:1px solid #333;
+}
 /* 导航栏 */
-nav {
-  background: #111;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+nav{
+  background:#111;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
-nav .logo {
-  font-size: 24px;
-  font-weight: bold;
+nav .logo{
+  font-size:24px;
+  font-weight:bold;
 }
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 20px;
-  font-weight: bold;
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:18px;
+  font-weight:bold;
 }
-nav a:hover {
-  color: #00ffff;
-}
-
-/* 头部 */
-.header {
-  text-align: center;
-  padding: 80px 20px 40px 20px;
-}
-.header h1 {
-  font-size: 50px;
-  margin-bottom: 10px;
-}
-.header .subtitle {
-  color: #888;
-  font-size: 18px;
+nav a:hover{
+  color:#00ffff;
 }
 
-/* 产品卡片 */
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 30px;
+/* 搜索区 */
+.search-bar{
+  padding:15px;
+  text-align:center;
 }
-.card {
-  background: #111;
-  border: 1px solid #222;
-  border-radius: 15px;
-  padding: 25px;
-  width: 260px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,255,255,0.2);
-}
-.card h2 {
-  margin-top: 0;
-}
-.card .price {
-  font-size: 28px;
-  margin: 15px 0;
-  color: #00ffff;
+.search-bar input{
+  width:60%;
+  padding:10px;
+  border-radius:8px;
+  border:none;
+  outline:none;
+  font-size:16px;
 }
 
-/* 付款方式 */
-.pay {
-  margin-top: 50px;
-  padding: 40px 20px;
-  background: #111;
-  text-align: center;
-  border-top: 1px solid #222;
+/* 商品区 */
+.container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
+  padding:20px;
 }
-.pay h2 {
-  margin-bottom: 20px;
+.card{
+  background:#111;
+  border:1px solid #222;
+  border-radius:12px;
+  width:260px;
+  padding:20px;
+  text-align:center;
 }
-.pay p {
-  margin: 5px 0;
+.card h2{margin-top:0;}
+.card .price{
+  color:#00ffff;
+  font-size:26px;
+  margin:12px 0;
 }
-.pay .btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 12px 25px;
-  background: #00ffff;
-  color: black;
-  text-decoration: none;
-  border-radius: 10px;
-  font-weight: bold;
-  transition: background 0.3s;
+.btn-buy{
+  padding:10px 22px;
+  background:#00ffff;
+  color:black;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
 }
-.pay .btn:hover {
-  background: #00bbbb;
-}
+.btn-buy:hover{background:#00bbbb;}
 
-/* 页脚 */
-.footer {
-  margin-top: 50px;
-  padding: 20px;
-  color: #666;
-  font-size: 14px;
-  text-align: center;
-  border-top: 1px solid #222;
-}
-
-/* 响应式 */
-@media screen and (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    align-items: center;
-  }
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  nav a {
-    margin: 10px 0 0 0;
-  }
+/* 底部 */
+.footer{
+  text-align:center;
+  padding:15px;
+  margin-top:40px;
+  border-top:1px solid #333;
+  color:#777;
+  font-size:14px;
 }
 </style>
 </head>
-
 <body>
 
-<!-- 导航栏 -->
+<div class="topbar">
+  ⚠️ 公告：本站商品仅供测试使用，请勿用于违法行为，否则后果自负
+</div>
+
 <nav>
   <div class="logo">CYBER STORE</div>
   <div>
     <a href="#products">产品</a>
-    <a href="#pay">购买</a>
-    <a href="#contact">联系</a>
+    <a href="#search">搜索</a>
+    <a href="#contact">客服</a>
   </div>
 </nav>
 
-<!-- 头部 -->
-<div class="header">
-  <h1>CYBER STORE</h1>
-  <p class="subtitle">海外数字服务 · 软件订阅 · 社媒工具</p>
+<div id="search" class="search-bar">
+  <input type="text" placeholder="输入商品名搜索…">
 </div>
 
-<!-- 产品卡片 -->
 <div id="products" class="container">
   <div class="card">
     <h2>Telegram Premium</h2>
-    <p>稳定订阅服务</p>
     <div class="price">$5</div>
+    <button class="btn-buy" onclick="location.href='https://t.me/your客服'">购买</button>
   </div>
   <div class="card">
     <h2>Spotify Premium</h2>
-    <p>海外会员服务</p>
     <div class="price">$3</div>
+    <button class="btn-buy" onclick="location.href='https://t.me/your客服'">购买</button>
   </div>
   <div class="card">
     <h2>Netflix</h2>
-    <p>流媒体会员</p>
     <div class="price">$6</div>
-  </div>
-  <div class="card">
-    <h2>ChatGPT Plus</h2>
-    <p>AI工具服务</p>
-    <div class="price">$10</div>
+    <button class="btn-buy" onclick="location.href='https://t.me/your客服'">购买</button>
   </div>
 </div>
 
-<!-- 付款方式 -->
-<div id="pay" class="pay">
-  <h2>付款方式</h2>
-  <p>USDT(TRC20)</p>
-  <p>PayPal</p>
-  <p>支付宝</p>
-  <a class="btn" href="#contact">联系购买</a>
-  <p style="margin-top:20px;" id="contact">Telegram：@yourname</p>
-</div>
-
-<!-- 页脚 -->
-<div class="footer">
+<div id="contact" class="footer">
+  💬 客服联系：<a href="https://t.me/your客服" style="color:#00ffff;">Telegram @your客服</a><br>
   © 2026 CYBER STORE
 </div>
 

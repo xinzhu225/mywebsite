@@ -5,66 +5,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CYBER STORE</title>
 <style>
-body{
-  font-family: Arial, sans-serif;
+body {
   margin:0;
   padding:0;
+  font-family: Arial, sans-serif;
   background:#0a0a0a;
   color:white;
 }
-/* 顶部通知 */
-.topbar{
-  background:#222;
-  padding:8px 15px;
-  text-align:center;
-  font-size:14px;
-  border-bottom:1px solid #333;
-}
-/* 导航栏 */
-nav{
+nav {
   background:#111;
   padding:15px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
-nav .logo{
+nav .logo {
   font-size:24px;
   font-weight:bold;
 }
-nav a{
+nav a {
   color:white;
   text-decoration:none;
   margin-left:18px;
   font-weight:bold;
 }
-nav a:hover{
+nav a:hover {
   color:#00ffff;
 }
-
-/* 搜索区 */
-.search-bar{
-  padding:15px;
+.header {
   text-align:center;
+  padding:60px 20px 30px 20px;
 }
-.search-bar input{
-  width:60%;
-  padding:10px;
-  border-radius:8px;
-  border:none;
-  outline:none;
-  font-size:16px;
+.header h1 {
+  font-size:50px;
+  margin-bottom:10px;
 }
-
-/* 商品区 */
-.container{
+.header .subtitle {
+  color:#888;
+  font-size:18px;
+}
+.container {
   display:flex;
   flex-wrap:wrap;
   justify-content:center;
   gap:20px;
   padding:20px;
 }
-.card{
+.card {
   background:#111;
   border:1px solid #222;
   border-radius:12px;
@@ -72,25 +59,26 @@ nav a:hover{
   padding:20px;
   text-align:center;
 }
-.card h2{margin-top:0;}
-.card .price{
+.card h2 { margin-top:0; }
+.card .price {
   color:#00ffff;
   font-size:26px;
   margin:12px 0;
 }
-.btn-buy{
+.btn-buy {
+  display:inline-block;
   padding:10px 22px;
+  margin-top:10px;
   background:#00ffff;
   color:black;
-  border:none;
+  text-decoration:none;
   border-radius:8px;
-  cursor:pointer;
   font-weight:bold;
 }
-.btn-buy:hover{background:#00bbbb;}
-
-/* 底部 */
-.footer{
+.btn-buy:hover {
+  background:#00bbbb;
+}
+.footer {
   text-align:center;
   padding:15px;
   margin-top:40px;
@@ -102,43 +90,73 @@ nav a:hover{
 </head>
 <body>
 
-<div class="topbar">
-  ⚠️ 公告：本站商品仅供测试使用，请勿用于违法行为，否则后果自负
-</div>
-
 <nav>
   <div class="logo">CYBER STORE</div>
   <div>
     <a href="#products">产品</a>
-    <a href="#search">搜索</a>
-    <a href="#contact">客服</a>
+    <a href="#contact">联系</a>
   </div>
 </nav>
 
-<div id="search" class="search-bar">
-  <input type="text" placeholder="输入商品名搜索…">
+<div class="header">
+  <h1>CYBER STORE</h1>
+  <p class="subtitle">出售海外社交软件账号 & AI 工具账号</p>
 </div>
 
 <div id="products" class="container">
+
   <div class="card">
-    <h2>Telegram Premium</h2>
+    <h2>Instagram</h2>
     <div class="price">$5</div>
-    <button class="btn-buy" onclick="location.href='https://t.me/your客服'">购买</button>
+    <p>付款方式：微信 / USDT / PayPal</p>
+    <a class="btn-buy" href="https://t.me/ykc666" target="_blank">联系 Telegram</a><br>
+    <a class="btn-buy" href="https://wa.me/15629384390" target="_blank">联系微信</a>
   </div>
+
   <div class="card">
-    <h2>Spotify Premium</h2>
-    <div class="price">$3</div>
-    <button class="btn-buy" onclick="location.href='https://t.me/your客服'">购买</button>
+    <h2>X</h2>
+    <div class="price">$4</div>
+    <p>付款方式：微信 / USDT / PayPal</p>
+    <a class="btn-buy" href="https://t.me/ykc666" target="_blank">联系 Telegram</a><br>
+    <a class="btn-buy" href="https://wa.me/15629384390" target="_blank">联系微信</a>
   </div>
+
   <div class="card">
-    <h2>Netflix</h2>
-    <div class="price">$6</div>
-    <button class="btn-buy" onclick="location.href='https://t.me/your客服'">购买</button>
+    <h2>ChatGPT</h2>
+    <div class="price">$10</div>
+    <p>付款方式：微信 / USDT / PayPal</p>
+    <a class="btn-buy" href="https://t.me/ykc666" target="_blank">联系 Telegram</a><br>
+    <a class="btn-buy" href="https://wa.me/15629384390" target="_blank">联系微信</a>
   </div>
+
+  <div class="card">
+    <h2>Gemini</h2>
+    <div class="price">$8</div>
+    <p>付款方式：微信 / USDT / PayPal</p>
+    <a class="btn-buy" href="https://t.me/ykc666" target="_blank">联系 Telegram</a><br>
+    <a class="btn-buy" href="https://wa.me/15629384390" target="_blank">联系微信</a>
+  </div>
+
+  <div class="card">
+    <h2>Telegram</h2>
+    <div class="price">$5</div>
+    <p>付款方式：微信 / USDT / PayPal</p>
+    <a class="btn-buy" href="https://t.me/ykc666" target="_blank">联系 Telegram</a><br>
+    <a class="btn-buy" href="https://wa.me/15629384390" target="_blank">联系微信</a>
+  </div>
+
+  <div class="card">
+    <h2>TikTok</h2>
+    <div class="price">$7</div>
+    <p>付款方式：微信 / USDT / PayPal</p>
+    <a class="btn-buy" href="https://t.me/ykc666" target="_blank">联系 Telegram</a><br>
+    <a class="btn-buy" href="https://wa.me/15629384390" target="_blank">联系微信</a>
+  </div>
+
 </div>
 
 <div id="contact" class="footer">
-  💬 客服联系：<a href="https://t.me/your客服" style="color:#00ffff;">Telegram @your客服</a><br>
+  💬 客服联系：Telegram @ykc666 | 微信 15629384390<br>
   © 2026 CYBER STORE
 </div>
 

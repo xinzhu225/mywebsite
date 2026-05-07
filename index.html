@@ -3,118 +3,441 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WEB3 AI 智能体工具站</title>
+<title>账号资源商城</title>
+
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background: #0a0a0a;
-    color: white;
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+    background:#0f0f0f;
+    color:white;
 }
-header {
-    background: #111;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+/* 顶部 */
+header{
+    background:#111;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
 }
-header .logo {
-    font-size: 24px;
-    font-weight: bold;
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
 }
-header nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 16px;
+
+.search-box input{
+    width:260px;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    outline:none;
 }
-header nav a:hover {
-    color: #00ffff;
+
+/* 分类 */
+.categories{
+    display:flex;
+    gap:10px;
+    padding:15px;
+    overflow:auto;
 }
-.announcement {
-    background: #222;
-    padding: 12px 20px;
-    font-size: 14px;
-    line-height: 1.5;
-    border-bottom: 1px solid #333;
+
+.categories button{
+    background:#222;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:8px;
+    cursor:pointer;
 }
-.main-section {
-    padding: 20px;
+
+.categories button:hover{
+    background:#00ffff;
+    color:black;
 }
-.button {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 18px;
-    background: #00ffff;
-    color: black;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
+
+/* 商品列表 */
+.products{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    padding:20px;
 }
-.button:hover {
-    background: #00bbbb;
+
+.card{
+    width:250px;
+    background:#161616;
+    border:1px solid #333;
+    border-radius:15px;
+    padding:20px;
+    text-align:center;
+    transition:0.3s;
 }
-.search-area {
-    margin-top: 15px;
-    text-align: center;
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 15px rgba(0,255,255,0.3);
 }
-.search-area input {
-    width: 90%;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    font-size: 16px;
+
+.card img{
+    width:70px;
+    height:70px;
 }
-.footer {
-    text-align: center;
-    padding: 15px;
-    font-size: 14px;
-    border-top: 1px solid #333;
-    margin-top: 40px;
-    color: #888;
+
+.price{
+    color:#00ffff;
+    font-size:26px;
+    margin:10px 0;
+}
+
+.btn{
+    display:inline-block;
+    padding:10px 18px;
+    margin-top:10px;
+    background:#00ffff;
+    color:black;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+    border:none;
+}
+
+/* 商品详情弹窗 */
+.modal{
+    display:none;
+    position:fixed;
+    z-index:999;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+}
+
+.modal-content{
+    background:#111;
+    width:90%;
+    max-width:500px;
+    margin:80px auto;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.close{
+    float:right;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* 购物车 */
+#cart{
+    position:fixed;
+    right:20px;
+    bottom:90px;
+    background:#111;
+    padding:15px;
+    border-radius:15px;
+    width:260px;
+    border:1px solid #333;
+}
+
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    margin:10px 0;
+}
+
+/* 客服按钮 */
+.support{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:#00ffff;
+    color:black;
+    padding:14px 20px;
+    border-radius:50px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* 卡密 */
+.code-box{
+    margin-top:20px;
+    padding:15px;
+    background:#1b1b1b;
+    border-radius:10px;
+    word-break:break-all;
+}
+
+/* 页脚 */
+footer{
+    text-align:center;
+    padding:30px;
+    color:#777;
 }
 </style>
 </head>
+
 <body>
 
 <header>
-  <div class="logo">WEB3 AI智能体跨境出海工具站</div>
-  <nav>
-    <a href="#login">登录</a>
-    <a href="#shop">购物</a>
-    <a href="#orders">查订单</a>
-    <a href="https://t.me/你的客服" target="_blank">在线客服</a>
-  </nav>
+    <div class="logo">账号资源商城</div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="搜索商品...">
+    </div>
 </header>
 
-<div class="announcement">
-  ➤➤免责声明：本站商品仅供Web3撸空投，跨境电商，AI智能体学习测试使用，请勿用于违法活动，否则后果自负。本站将配合相关部门打击。  
-  <br>
-  ➤➤购买本站商品后请第一时间修改账号资料，24小时后删除记录，请自行保管。包首登商品非登录问题恕不售后，其它业务请自行测试，购买代表你同意此条款。  
-  <br>
-  ➤➤全站商品均有优惠价，诚邀代理商合作开启躺赚模式。  
-  <br><br>
-  〖售后政策〗若产品未使用有质量问题，我们支持全额退款。账号有问题需要售后，请带上订单号、账号卡密及截图或录视频处理。  
-  <br>
-  以下情况不接受退款：用户买错 / 用户不会操作但产品质量无问题 / 其他非产品问题。  
-  <br>
-  付款后五分钟内未自动发货或未看到卡密，请联系在线客服处理。
+<!-- 分类 -->
+<div class="categories">
+    <button onclick="filterProducts('全部')">全部</button>
+    <button onclick="filterProducts('Instagram')">Instagram</button>
+    <button onclick="filterProducts('TikTok')">TikTok</button>
+    <button onclick="filterProducts('Telegram')">Telegram</button>
+    <button onclick="filterProducts('ChatGPT')">ChatGPT</button>
+    <button onclick="filterProducts('Gemini')">Gemini</button>
 </div>
 
-<div class="main-section">
-  <div class="search-area">
-    <input type="text" placeholder="输入商品名搜索…">
-  </div>
+<!-- 商品 -->
+<div class="products" id="productList"></div>
 
-  <!-- 示例按钮（可以添加商品列表） -->
-  <a class="button" href="https://t.me/你的客服" target="_blank">点击联系 Telegram 客服</a>
-  <a class="button" href="https://wa.me/你的微信号码" target="_blank">点击联系微信</a>
+<!-- 商品详情 -->
+<div class="modal" id="productModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+
+        <img id="modalImg" width="80">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+        <div class="price" id="modalPrice"></div>
+
+        <button class="btn" onclick="addToCart()">加入购物车</button>
+
+        <div class="code-box">
+            <h3>卡密自动生成</h3>
+            <div id="generatedCode"></div>
+            <button class="btn" onclick="generateCode()">生成卡密</button>
+        </div>
+
+    </div>
 </div>
 
-<div class="footer">
-  © 2026 WEB3 AI 智能体工具站
+<!-- 购物车 -->
+<div id="cart">
+    <h3>购物车 🛒</h3>
+    <div id="cartItems"></div>
+    <hr>
+    <div id="cartTotal">总价：$0</div>
 </div>
+
+<!-- 客服 -->
+<div class="support"
+onclick="window.open('https://t.me/ykc666','_blank')">
+联系客服
+</div>
+
+<footer>
+Telegram：@ykc666<br>
+微信：15629384390<br><br>
+© 2026 账号资源商城
+</footer>
+
+<script>
+
+/* 商品数据 */
+const products = [
+
+{
+name:"Instagram账号",
+price:5,
+category:"Instagram",
+img:"https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png",
+desc:"海外Instagram老号 高质量稳定"
+},
+
+{
+name:"TikTok账号",
+price:7,
+category:"TikTok",
+img:"https://upload.wikimedia.org/wikipedia/commons/6/6c/TikTok_logo.svg",
+desc:"TikTok海外账号 可直接使用"
+},
+
+{
+name:"Telegram账号",
+price:4,
+category:"Telegram",
+img:"https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg",
+desc:"Telegram海外账号"
+},
+
+{
+name:"ChatGPT账号",
+price:10,
+category:"ChatGPT",
+img:"https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+desc:"ChatGPT Plus 可升级"
+},
+
+{
+name:"Gemini账号",
+price:8,
+category:"Gemini",
+img:"https://upload.wikimedia.org/wikipedia/commons/e/e2/Gemini_logo.svg",
+desc:"Gemini AI海外账号"
+}
+
+];
+
+let cart = [];
+let currentProduct = null;
+
+/* 显示商品 */
+function displayProducts(list){
+
+const productList = document.getElementById("productList");
+
+productList.innerHTML = "";
+
+list.forEach(product=>{
+
+productList.innerHTML += `
+<div class="card">
+
+<img src="${product.img}">
+<h2>${product.name}</h2>
+
+<div class="price">$${product.price}</div>
+
+<button class="btn"
+onclick='openModal(${JSON.stringify(product)})'>
+查看详情
+</button>
+
+</div>
+`;
+
+});
+
+}
+
+displayProducts(products);
+
+/* 搜索 */
+document.getElementById("searchInput")
+.addEventListener("input", function(){
+
+const keyword = this.value.toLowerCase();
+
+const filtered = products.filter(p =>
+p.name.toLowerCase().includes(keyword)
+);
+
+displayProducts(filtered);
+
+});
+
+/* 分类 */
+function filterProducts(category){
+
+if(category==="全部"){
+displayProducts(products);
+return;
+}
+
+const filtered = products.filter(
+p=>p.category===category
+);
+
+displayProducts(filtered);
+
+}
+
+/* 商品详情 */
+function openModal(product){
+
+currentProduct = product;
+
+document.getElementById("productModal").style.display="block";
+
+document.getElementById("modalImg").src = product.img;
+document.getElementById("modalTitle").innerText = product.name;
+document.getElementById("modalDesc").innerText = product.desc;
+document.getElementById("modalPrice").innerText = "$"+product.price;
+
+}
+
+function closeModal(){
+document.getElementById("productModal").style.display="none";
+}
+
+/* 加入购物车 */
+function addToCart(){
+
+cart.push(currentProduct);
+
+renderCart();
+
+alert("已加入购物车");
+
+}
+
+/* 渲染购物车 */
+function renderCart(){
+
+const cartItems = document.getElementById("cartItems");
+
+cartItems.innerHTML = "";
+
+let total = 0;
+
+cart.forEach(item=>{
+
+total += item.price;
+
+cartItems.innerHTML += `
+<div class="cart-item">
+<span>${item.name}</span>
+<span>$${item.price}</span>
+</div>
+`;
+
+});
+
+document.getElementById("cartTotal")
+.innerText = "总价：$"+total;
+
+}
+
+/* 卡密生成 */
+function generateCode(){
+
+const chars =
+"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+let code = "";
+
+for(let i=0;i<20;i++){
+
+code += chars.charAt(
+Math.floor(Math.random()*chars.length)
+);
+
+}
+
+document.getElementById("generatedCode")
+.innerText = code;
+
+}
+
+</script>
 
 </body>
 </html>

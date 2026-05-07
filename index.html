@@ -3,172 +3,117 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CYBER STORE</title>
+<title>WEB3 AI 智能体工具站</title>
 <style>
 body {
-  margin:0;
-  padding:0;
-  font-family: Arial, sans-serif;
-  background:#0a0a0a;
-  color:white;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #0a0a0a;
+    color: white;
 }
-nav {
-  background:#111;
-  padding:15px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+header {
+    background: #111;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-nav .logo {
-  font-size:24px;
-  font-weight:bold;
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
 }
-nav a {
-  color:white;
-  text-decoration:none;
-  margin-left:18px;
-  font-weight:bold;
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
 }
-nav a:hover {
-  color:#00ffff;
+header nav a:hover {
+    color: #00ffff;
 }
-.header {
-  text-align:center;
-  padding:60px 20px 30px 20px;
+.announcement {
+    background: #222;
+    padding: 12px 20px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-bottom: 1px solid #333;
 }
-.header h1 {
-  font-size:50px;
-  margin-bottom:10px;
+.main-section {
+    padding: 20px;
 }
-.header .subtitle {
-  color:#888;
-  font-size:18px;
+.button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 18px;
+    background: #00ffff;
+    color: black;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
 }
-.container {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:20px;
-  padding:20px;
+.button:hover {
+    background: #00bbbb;
 }
-.card {
-  background:#111;
-  border:1px solid #222;
-  border-radius:12px;
-  width:260px;
-  padding:20px;
-  text-align:center;
+.search-area {
+    margin-top: 15px;
+    text-align: center;
 }
-.card img {
-  width:60px;
-  height:60px;
-  margin-bottom:10px;
-}
-.card h2 { margin-top:0; }
-.card .price {
-  color:#00ffff;
-  font-size:26px;
-  margin:12px 0;
-}
-.btn-buy {
-  display:inline-block;
-  padding:10px 22px;
-  margin-top:10px;
-  background:#00ffff;
-  color:black;
-  text-decoration:none;
-  border-radius:8px;
-  font-weight:bold;
-}
-.btn-buy:hover {
-  background:#00bbbb;
+.search-area input {
+    width: 90%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
 }
 .footer {
-  text-align:center;
-  padding:15px;
-  margin-top:40px;
-  border-top:1px solid #333;
-  color:#777;
-  font-size:14px;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    border-top: 1px solid #333;
+    margin-top: 40px;
+    color: #888;
 }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="logo">CYBER STORE</div>
-  <div>
-    <a href="#products">产品</a>
-    <a href="#contact">联系</a>
-  </div>
-</nav>
+<header>
+  <div class="logo">WEB3 AI智能体跨境出海工具站</div>
+  <nav>
+    <a href="#login">登录</a>
+    <a href="#shop">购物</a>
+    <a href="#orders">查订单</a>
+    <a href="https://t.me/你的客服" target="_blank">在线客服</a>
+  </nav>
+</header>
 
-<div class="header">
-  <h1>CYBER STORE</h1>
-  <p class="subtitle">出售海外社交软件账号 & AI 工具账号</p>
+<div class="announcement">
+  ➤➤免责声明：本站商品仅供Web3撸空投，跨境电商，AI智能体学习测试使用，请勿用于违法活动，否则后果自负。本站将配合相关部门打击。  
+  <br>
+  ➤➤购买本站商品后请第一时间修改账号资料，24小时后删除记录，请自行保管。包首登商品非登录问题恕不售后，其它业务请自行测试，购买代表你同意此条款。  
+  <br>
+  ➤➤全站商品均有优惠价，诚邀代理商合作开启躺赚模式。  
+  <br><br>
+  〖售后政策〗若产品未使用有质量问题，我们支持全额退款。账号有问题需要售后，请带上订单号、账号卡密及截图或录视频处理。  
+  <br>
+  以下情况不接受退款：用户买错 / 用户不会操作但产品质量无问题 / 其他非产品问题。  
+  <br>
+  付款后五分钟内未自动发货或未看到卡密，请联系在线客服处理。
 </div>
 
-<div id="products" class="container">
-
-  <div class="card">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-    <h2>Instagram</h2>
-    <div class="price">$5</div>
-    <p>付款方式：微信 / USDT / PayPal</p>
-    <a class="btn-buy" href="https://t.me/ykc666" target="_blank">联系 Telegram</a><br>
-    <a class="btn-buy" href="https://wa.me/15629384390" target="_blank">联系微信</a>
+<div class="main-section">
+  <div class="search-area">
+    <input type="text" placeholder="输入商品名搜索…">
   </div>
 
-  <div class="card">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/X_logo_2023.svg" alt="X Logo">
-    <h2>X</h2>
-    <div class="price">$4</div>
-    <p>付款方式：微信 / USDT / PayPal</p>
-    <a class="btn-buy" href="https://t.me/ykc666" target="_blank">联系 Telegram</a><br>
-    <a class="btn-buy" href="https://wa.me/15629384390" target="_blank">联系微信</a>
-  </div>
-
-  <div class="card">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT">
-    <h2>ChatGPT</h2>
-    <div class="price">$10</div>
-    <p>付款方式：微信 / USDT / PayPal</p>
-    <a class="btn-buy" href="https://t.me/ykc666" target="_blank">联系 Telegram</a><br>
-    <a class="btn-buy" href="https://wa.me/15629384390" target="_blank">联系微信</a>
-  </div>
-
-  <div class="card">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Gemini_logo.svg" alt="Gemini">
-    <h2>Gemini</h2>
-    <div class="price">$8</div>
-    <p>付款方式：微信 / USDT / PayPal</p>
-    <a class="btn-buy" href="https://t.me/ykc666" target="_blank">联系 Telegram</a><br>
-    <a class="btn-buy" href="https://wa.me/15629384390" target="_blank">联系微信</a>
-  </div>
-
-  <div class="card">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
-    <h2>Telegram</h2>
-    <div class="price">$5</div>
-    <p>付款方式：微信 / USDT / PayPal</p>
-    <a class="btn-buy" href="https://t.me/ykc666" target="_blank">联系 Telegram</a><br>
-    <a class="btn-buy" href="https://wa.me/15629384390" target="_blank">联系微信</a>
-  </div>
-
-  <div class="card">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/TikTok_logo.svg" alt="TikTok">
-    <h2>TikTok</h2>
-    <div class="price">$7</div>
-    <p>付款方式：微信 / USDT / PayPal</p>
-    <a class="btn-buy" href="https://t.me/ykc666" target="_blank">联系 Telegram</a><br>
-    <a class="btn-buy" href="https://wa.me/15629384390" target="_blank">联系微信</a>
-  </div>
-
+  <!-- 示例按钮（可以添加商品列表） -->
+  <a class="button" href="https://t.me/你的客服" target="_blank">点击联系 Telegram 客服</a>
+  <a class="button" href="https://wa.me/你的微信号码" target="_blank">点击联系微信</a>
 </div>
 
-<div id="contact" class="footer">
-  💬 客服联系：Telegram @ykc666 | 微信 15629384390<br>
-  © 2026 CYBER STORE
+<div class="footer">
+  © 2026 WEB3 AI 智能体工具站
 </div>
 
 </body>

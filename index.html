@@ -10,13 +10,13 @@ body{
     margin:0;
     padding:0;
     font-family:Arial,sans-serif;
-    background:#0f0f0f;
+    background: linear-gradient(120deg,#0d1b2a,#1b263b);
     color:white;
 }
 
 /* 顶部 */
 header{
-    background:#111;
+    background:#0f4c75;
     padding:15px 20px;
     display:flex;
     justify-content:space-between;
@@ -24,6 +24,7 @@ header{
     position:sticky;
     top:0;
     z-index:100;
+    box-shadow:0 3px 6px rgba(0,0,0,0.3);
 }
 
 .logo{
@@ -48,17 +49,18 @@ header{
 }
 
 .categories button{
-    background:#222;
+    background:#3282b8;
     color:white;
     border:none;
     padding:8px 15px;
     border-radius:8px;
     cursor:pointer;
+    transition:0.3s;
 }
 
 .categories button:hover{
-    background:#00ffff;
-    color:black;
+    background:#0f4c75;
+    color:white;
 }
 
 /* 商品列表 */
@@ -72,8 +74,7 @@ header{
 
 .card{
     width:250px;
-    background:#161616;
-    border:1px solid #333;
+    background:#1b3b53;
     border-radius:15px;
     padding:20px;
     text-align:center;
@@ -82,7 +83,7 @@ header{
 
 .card:hover{
     transform:translateY(-5px);
-    box-shadow:0 0 15px rgba(0,255,255,0.3);
+    box-shadow:0 0 20px rgba(50,130,184,0.5);
 }
 
 .card img{
@@ -91,7 +92,7 @@ header{
 }
 
 .price{
-    color:#00ffff;
+    color:#ffd60a;
     font-size:26px;
     margin:10px 0;
 }
@@ -100,12 +101,17 @@ header{
     display:inline-block;
     padding:10px 18px;
     margin-top:10px;
-    background:#00ffff;
+    background:#ffd60a;
     color:black;
     border-radius:8px;
     font-weight:bold;
     cursor:pointer;
     border:none;
+    transition:0.3s;
+}
+
+.btn:hover {
+    background:#e6b800;
 }
 
 /* 商品详情弹窗 */
@@ -121,7 +127,7 @@ header{
 }
 
 .modal-content{
-    background:#111;
+    background:#1b3b53;
     width:90%;
     max-width:500px;
     margin:80px auto;
@@ -141,11 +147,11 @@ header{
     position:fixed;
     right:20px;
     bottom:90px;
-    background:#111;
+    background:#1b3b53;
     padding:15px;
     border-radius:15px;
     width:260px;
-    border:1px solid #333;
+    border:1px solid #3282b8;
 }
 
 .cart-item{
@@ -159,19 +165,20 @@ header{
     position:fixed;
     right:20px;
     bottom:20px;
-    background:#00ffff;
+    background:#ffd60a;
     color:black;
     padding:14px 20px;
     border-radius:50px;
     font-weight:bold;
     cursor:pointer;
+    box-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
 /* 卡密 */
 .code-box{
     margin-top:20px;
     padding:15px;
-    background:#1b1b1b;
+    background:#3282b8;
     border-radius:10px;
     word-break:break-all;
 }
@@ -180,7 +187,7 @@ header{
 footer{
     text-align:center;
     padding:30px;
-    color:#777;
+    color:#aaa;
 }
 </style>
 </head>
@@ -189,7 +196,6 @@ footer{
 
 <header>
     <div class="logo">账号资源商城</div>
-
     <div class="search-box">
         <input type="text" id="searchInput" placeholder="搜索商品...">
     </div>
@@ -238,22 +244,15 @@ footer{
 </div>
 
 <!-- 客服 -->
-<div class="support"
-onclick="window.open('https://t.me/ykc666','_blank')">
-联系客服
-</div>
+<div class="support" onclick="window.open('https://t.me/ykc666','_blank')">联系客服</div>
 
 <footer>
-Telegram：@ykc666<br>
-微信：15629384390<br><br>
+Telegram：@ykc666 | 微信：15629384390<br><br>
 © 2026 账号资源商城
 </footer>
 
 <script>
-
-/* 商品数据 */
 const products = [
-
 {
 name:"Instagram账号",
 price:5,
@@ -261,23 +260,20 @@ category:"Instagram",
 img:"https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png",
 desc:"海外Instagram老号 高质量稳定"
 },
-
 {
 name:"TikTok账号",
 price:7,
 category:"TikTok",
 img:"https://upload.wikimedia.org/wikipedia/commons/6/6c/TikTok_logo.svg",
-desc:"TikTok海外账号 可直接使用"
+desc:"TikTok海外账号"
 },
-
 {
 name:"Telegram账号",
-price:4,
+price:6,
 category:"Telegram",
 img:"https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg",
 desc:"Telegram海外账号"
 },
-
 {
 name:"ChatGPT账号",
 price:10,
@@ -285,158 +281,74 @@ category:"ChatGPT",
 img:"https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
 desc:"ChatGPT Plus 可升级"
 },
-
 {
 name:"Gemini账号",
-price:8,
+price:9,
 category:"Gemini",
 img:"https://upload.wikimedia.org/wikipedia/commons/e/e2/Gemini_logo.svg",
 desc:"Gemini AI海外账号"
 }
-
 ];
 
 let cart = [];
 let currentProduct = null;
 
-/* 显示商品 */
 function displayProducts(list){
-
 const productList = document.getElementById("productList");
-
 productList.innerHTML = "";
-
 list.forEach(product=>{
-
 productList.innerHTML += `
 <div class="card">
-
 <img src="${product.img}">
 <h2>${product.name}</h2>
-
 <div class="price">$${product.price}</div>
-
-<button class="btn"
-onclick='openModal(${JSON.stringify(product)})'>
-查看详情
-</button>
-
-</div>
-`;
-
+<button class="btn" onclick='openModal(${JSON.stringify(product)})'>查看详情</button>
+</div>`;
 });
-
 }
-
 displayProducts(products);
 
-/* 搜索 */
-document.getElementById("searchInput")
-.addEventListener("input", function(){
-
+document.getElementById("searchInput").addEventListener("input", function(){
 const keyword = this.value.toLowerCase();
-
-const filtered = products.filter(p =>
-p.name.toLowerCase().includes(keyword)
-);
-
+const filtered = products.filter(p => p.name.toLowerCase().includes(keyword));
 displayProducts(filtered);
-
 });
 
-/* 分类 */
 function filterProducts(category){
-
-if(category==="全部"){
-displayProducts(products);
-return;
-}
-
-const filtered = products.filter(
-p=>p.category===category
-);
-
+if(category==="全部"){displayProducts(products); return;}
+const filtered = products.filter(p=>p.category===category);
 displayProducts(filtered);
-
 }
 
-/* 商品详情 */
 function openModal(product){
-
 currentProduct = product;
-
 document.getElementById("productModal").style.display="block";
-
 document.getElementById("modalImg").src = product.img;
 document.getElementById("modalTitle").innerText = product.name;
 document.getElementById("modalDesc").innerText = product.desc;
 document.getElementById("modalPrice").innerText = "$"+product.price;
-
 }
 
-function closeModal(){
-document.getElementById("productModal").style.display="none";
-}
+function closeModal(){document.getElementById("productModal").style.display="none";}
+function addToCart(){cart.push(currentProduct); renderCart(); alert("已加入购物车");}
 
-/* 加入购物车 */
-function addToCart(){
-
-cart.push(currentProduct);
-
-renderCart();
-
-alert("已加入购物车");
-
-}
-
-/* 渲染购物车 */
 function renderCart(){
-
 const cartItems = document.getElementById("cartItems");
-
 cartItems.innerHTML = "";
-
 let total = 0;
-
 cart.forEach(item=>{
-
 total += item.price;
-
-cartItems.innerHTML += `
-<div class="cart-item">
-<span>${item.name}</span>
-<span>$${item.price}</span>
-</div>
-`;
-
+cartItems.innerHTML += `<div class="cart-item"><span>${item.name}</span><span>$${item.price}</span></div>`;
 });
-
-document.getElementById("cartTotal")
-.innerText = "总价：$"+total;
-
+document.getElementById("cartTotal").innerText = "总价：$"+total;
 }
 
-/* 卡密生成 */
 function generateCode(){
-
-const chars =
-"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
+const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 let code = "";
-
-for(let i=0;i<20;i++){
-
-code += chars.charAt(
-Math.floor(Math.random()*chars.length)
-);
-
+for(let i=0;i<20;i++){ code += chars.charAt(Math.floor(Math.random()*chars.length)); }
+document.getElementById("generatedCode").innerText = code;
 }
-
-document.getElementById("generatedCode")
-.innerText = code;
-
-}
-
 </script>
 
 </body>

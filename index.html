@@ -47,11 +47,6 @@ nav a{margin-left:22px;color:#ddd;transition:0.3s;}nav a:hover{color:#00e5ff;}
 .hero-content h1{font-size:62px;margin-bottom:15px;}
 .hero-content p{color:#ccc;font-size:18px;}
 
-/* 实时数据 */
-.stats{display:flex;gap:20px;padding:20px;flex-wrap:wrap;}
-.stat-card{flex:1;min-width:220px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);padding:25px;border-radius:20px;backdrop-filter:blur(10px);}
-.stat-card h2{font-size:36px;color:#00e5ff;}
-
 /* 搜索 */
 .search-box{padding:20px;}
 .search-box input{width:100%;padding:15px;border:none;border-radius:16px;background:rgba(255,255,255,0.06);color:white;outline:none;}
@@ -97,7 +92,6 @@ footer{margin-top:60px;padding:40px 20px;text-align:center;color:#888;border-top
 .user-panel{display:none;}
 .hero-content h1{font-size:38px;}
 }
-
 </style>
 </head>
 
@@ -132,12 +126,11 @@ footer{margin-top:60px;padding:40px 20px;text-align:center;color:#888;border-top
 <h2>用户中心</h2>
 <p>用户名：DemoUser</p>
 <div class="vip">VIP PRO</div>
-<p style="margin-top:15px;">余额：$128.50</p>
+<p style="margin-top:15px;">余额：¥128.50</p>
 <p>积分：2380</p>
 </div>
 
 <div class="main">
-
 <div class="hero">
 <video autoplay muted loop>
 <source src="https://cdn.coverr.co/videos/coverr-programming-on-a-computer-1579/1080p.mp4" type="video/mp4">
@@ -148,18 +141,11 @@ footer{margin-top:60px;padding:40px 20px;text-align:center;color:#888;border-top
 </div>
 </div>
 
-<div class="stats">
-<div class="stat-card"><h2 id="online">0</h2><p>实时在线</p></div>
-<div class="stat-card"><h2 id="orders">0</h2><p>今日订单</p></div>
-<div class="stat-card"><h2 id="users">0</h2><p>注册用户</p></div>
-</div>
-
 <div class="search-box">
 <input type="text" id="searchInput" placeholder="搜索 AI 工具 / Web3 资源">
 </div>
 
 <div class="products" id="productList"></div>
-
 </div>
 
 <div class="live-buy" id="liveBuy">用户***刚刚购买了 ChatGPT Prompt大全</div>
@@ -172,14 +158,14 @@ Telegram：@ykc666 | 微信：15629384390<br>
 
 <!-- JS -->
 <script>
-// 商品数据示例
+// 商品数据示例（价格已改为人民币 ¥）
 const products=[
-{name:"ChatGPT Prompt大全",category:"AI工具",price:29,desc:"包含500+高质量Prompt模板",features:["适用于ChatGPT/Gemini","适合运营/营销/写作","持续更新"],img:"https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg"},
-{name:"Gemini高级用法",category:"AI工具",price:39,desc:"Gemini AI深度工作流",features:["AI办公","AI写作","AI自动化"],img:"https://upload.wikimedia.org/wikipedia/commons/e/e2/Gemini_logo.svg"},
-{name:"Telegram自动化脚本",category:"自动化",price:49,desc:"TG群发与自动管理工具",features:["自动回复","群发系统","用户管理"],img:"https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg"},
-{name:"TikTok运营教程",category:"社媒运营",price:59,desc:"从0到1搭建TikTok账号",features:["账号起号技巧","热门视频结构","涨粉策略"],img:"https://upload.wikimedia.org/wikipedia/commons/6/6c/TikTok_logo.svg"},
-{name:"Instagram引流模板",category:"社媒运营",price:39,desc:"海外Instagram自动化引流方案",features:["高转化文案","标签模板","自动化流程"],img:"https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"},
-{name:"Web3空投教程",category:"Web3",price:69,desc:"热门Web3空投交互教学",features:["钱包配置","交互步骤","安全指南"],img:"https://cryptologos.cc/logos/ethereum-eth-logo.png"}];
+{name:"ChatGPT Prompt大全",category:"AI工具",price:199,desc:"包含500+高质量Prompt模板",features:["适用于ChatGPT/Gemini","适合运营/营销/写作","持续更新"],img:"https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg"},
+{name:"Gemini高级用法",category:"AI工具",price:269,desc:"Gemini AI深度工作流",features:["AI办公","AI写作","AI自动化"],img:"https://upload.wikimedia.org/wikipedia/commons/e/e2/Gemini_logo.svg"},
+{name:"Telegram自动化脚本",category:"自动化",price:299,desc:"TG群发与自动管理工具",features:["自动回复","群发系统","用户管理"],img:"https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg"},
+{name:"TikTok运营教程",category:"社媒运营",price:399,desc:"从0到1搭建TikTok账号",features:["账号起号技巧","热门视频结构","涨粉策略"],img:"https://upload.wikimedia.org/wikipedia/commons/6/6c/TikTok_logo.svg"},
+{name:"Instagram引流模板",category:"社媒运营",price:329,desc:"海外Instagram自动化引流方案",features:["高转化文案","标签模板","自动化流程"],img:"https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"},
+{name:"Web3空投教程",category:"Web3",price:499,desc:"热门Web3空投交互教学",features:["钱包配置","交互步骤","安全指南"],img:"https://cryptologos.cc/logos/ethereum-eth-logo.png"}];
 
 let filteredProducts=[...products];
 let currentProduct=null;
@@ -196,7 +182,7 @@ productList.innerHTML+=`
 <img src="${p.img}">
 <h2>${p.name}</h2>
 <p>${p.desc}</p>
-<div class="price">$${p.price}</div>
+<div class="price">¥${p.price}</div>
 <button class="btn" onclick='openModal(${JSON.stringify(p)})'>查看详情</button>
 </div>`;
 });
@@ -218,7 +204,7 @@ modal.style.display="block";
 document.getElementById("modalImg").src=p.img;
 document.getElementById("modalTitle").innerText=p.name;
 document.getElementById("modalDesc").innerText=p.desc;
-document.getElementById("modalPrice").innerText="$"+p.price;
+document.getElementById("modalPrice").innerText="¥"+p.price;
 const featureList=document.getElementById("modalFeatures");
 featureList.innerHTML="";
 p.features.forEach(f=>{featureList.innerHTML+=`<li>${f}</li>`;});
@@ -231,26 +217,9 @@ function renderCart(){
 const cartItems=document.getElementById("cartItems");
 cartItems.innerHTML="";
 let total=0;
-cart.forEach(item=>{total+=item.price;cartItems.innerHTML+=`<div class="cart-item"><span>${item.name}</span><span>$${item.price}</span></div>`;});
-document.getElementById("cartTotal").innerText="总价：$"+total;
+cart.forEach(item=>{total+=item.price;cartItems.innerHTML+=`<div class="cart-item"><span>${item.name}</span><span>¥${item.price}</span></div>`;});
+document.getElementById("cartTotal").innerText="总价：¥"+total;
 }
-
-// 实时数据动画
-function animateValue(id,start,end,duration){
-let obj=document.getElementById(id);
-let range=end-start;
-let current=start;
-let increment=end>start?1:-1;
-let stepTime=Math.abs(Math.floor(duration/range));
-let timer=setInterval(()=>{
-current+=increment;
-obj.innerText=current;
-if(current==end){clearInterval(timer);}
-},stepTime);
-}
-animateValue("online",0,1288,2000);
-animateValue("orders",0,523,2000);
-animateValue("users",0,18942,2000);
 
 // 实时购买提示
 const buys=[
@@ -262,7 +231,6 @@ const buys=[
 "用户***购买了 Web3空投教程"
 ];
 setInterval(()=>{document.getElementById("liveBuy").innerText=buys[Math.floor(Math.random()*buys.length)];},3000);
-
 </script>
 </body>
 </html>
